@@ -63,6 +63,7 @@ import de.codecentric.boot.admin.client.registration.ServletApplicationFactory;
 import de.codecentric.boot.admin.client.registration.metadata.CompositeMetadataContributor;
 import de.codecentric.boot.admin.client.registration.metadata.MetadataContributor;
 import de.codecentric.boot.admin.client.registration.metadata.StartupDateMetadataContributor;
+import de.codecentric.boot.admin.client.registration.metadata.JavaVersionMetadataContributor;
 
 import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;
 import static org.springframework.web.reactive.function.client.ExchangeFilterFunctions.basicAuthentication;
@@ -95,11 +96,17 @@ public class SpringBootAdminClientAutoConfiguration {
 		return listener;
 	}
 
-	@Bean
-	@ConditionalOnMissingBean
-	public StartupDateMetadataContributor startupDateMetadataContributor() {
-		return new StartupDateMetadataContributor();
-	}
+        @Bean
+        @ConditionalOnMissingBean
+        public StartupDateMetadataContributor startupDateMetadataContributor() {
+                return new StartupDateMetadataContributor();
+        }
+
+        @Bean
+        @ConditionalOnMissingBean
+        public JavaVersionMetadataContributor javaVersionMetadataContributor() {
+                return new JavaVersionMetadataContributor();
+        }
 
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnWebApplication(type = Type.SERVLET)

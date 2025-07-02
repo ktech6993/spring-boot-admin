@@ -99,6 +99,12 @@ spring.boot.admin.client.instance.metadata.tags.environment=test
 info.tags.environment=test
 ```
 
+## Java Runtime Metadata
+
+The client automatically registers details about the running JVM. Each
+instance exposes the `java.version` and `java.vendor` metadata entries so
+the server can display the Java runtime used by the application.
+
 ## Spring Boot Admin Client
 
 The Spring Boot Admin Client registers the application at the admin server. This is done by periodically doing a HTTP post request to the SBA Server providing information about the application.
