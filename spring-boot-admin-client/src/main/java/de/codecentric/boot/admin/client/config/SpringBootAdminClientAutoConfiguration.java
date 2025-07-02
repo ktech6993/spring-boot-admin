@@ -19,6 +19,8 @@ package de.codecentric.boot.admin.client.config;
 import java.util.Collections;
 import java.util.List;
 
+import de.codecentric.boot.admin.client.registration.metadata.JavaVersionMetadataContributor;
+
 import jakarta.servlet.ServletContext;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointAutoConfiguration;
@@ -99,6 +101,12 @@ public class SpringBootAdminClientAutoConfiguration {
 	@ConditionalOnMissingBean
 	public StartupDateMetadataContributor startupDateMetadataContributor() {
 		return new StartupDateMetadataContributor();
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	public JavaVersionMetadataContributor javaVersionMetadataContributor() {
+		return new JavaVersionMetadataContributor();
 	}
 
 	@Configuration(proxyBeanMethods = false)
